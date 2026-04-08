@@ -132,7 +132,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "base"
+name = "base_vo"
 version = "0.1.0"
 dependencies = [
  "chrono",

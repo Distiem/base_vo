@@ -9,4 +9,4 @@ pub use id_interno::IdInterno;
 pub use id_simple::IdSimple;
 pub use version::Version;
 pub use fecha_creacion::FechaCreacion;
-pub use fecha_modificacion::{FechaModificacion};
+pub use fecha_modificacion::FechaModificacion;
