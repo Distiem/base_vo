@@ -1,0 +1,36 @@
+# 🔒 Ignorar archivos de compilación
+
+/target/
+
+# Archivos de Cargo (lock depende del tipo de proyecto)
+
+# Para aplicaciones: normalmente SÍ se incluye Cargo.lock
+
+# Para librerías: se puede ignorar
+
+# Cargo.lock
+
+# Archivos temporales del sistema
+
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+
+*.log
+
+# Archivos de entorno (claves, configs sensibles)
+
+.env
+.env.*
+
+# Archivos generados por editores
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de backup
+
+*~
