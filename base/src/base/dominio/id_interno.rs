@@ -31,7 +31,7 @@ impl IdInterno {
     }
 
     /// Crea un IdInterno a partir de un string validado.
-    pub fn desde_string(valor: &str) -> Result<Self, IdInternoValidationError> {
+    pub fn desde_str(valor: &str) -> Result<Self, IdInternoValidationError> {
         let uuid_validado = IdInternoStringValidador::validar(valor)?;
         Ok(Self(uuid_validado))
     }
@@ -39,6 +39,12 @@ impl IdInterno {
     /// Genera un nuevo IdInterno (UUID v4) válido automáticamente.
     pub fn generar() -> Self {
         Self(Uuid::new_v4())
+    }
+    
+    /// Crea un IdInterno a partir de un String validado.
+    pub fn desde_string(valor: String) -> Result<Self, IdInternoValidationError> {
+        let uuid_validado = IdInternoStringValidador::validar(&valor)?;
+        Ok(Self(uuid_validado))
     }
 
     // ---------------------------------------------------------
@@ -65,7 +71,7 @@ impl FromStr for IdInterno {
 
     /// Permite crear un IdInterno usando `"texto".parse()`.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        Self::desde_string(s)
+        Self::desde_str(s)
     }
 }
 
@@ -83,7 +89,7 @@ impl TryFrom<&str> for IdInterno {
 
     /// Permite convertir desde &str usando try_from / try_into.
     fn try_from(value: &str) -> Result<Self, Self::Error> {
-        Self::desde_string(value)
+        Self::desde_str(value)
     }
 }
 
@@ -124,7 +130,7 @@ mod tests {
         let resultados: Vec<ProcesamientoResultado> = entradas
             .into_iter()
             .map(|raw_str| {
-                match IdInterno::desde_string(&raw_str) {
+                match IdInterno::desde_str(&raw_str) {
                     Ok(id) => ProcesamientoResultado {
                         entrada: raw_str,
                         salida: Some(id),
